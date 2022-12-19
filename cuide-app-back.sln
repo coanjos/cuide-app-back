@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cuide.api", "Cuide.api\Cuide.api.csproj", "{746489BE-42D9-4509-9FA7-DB508AAB8B09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cuide.UnitTests", "Cuide.UnitTests\Cuide.UnitTests.csproj", "{F093C46F-0E84-4FFF-835B-7615EE4AE481}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{746489BE-42D9-4509-9FA7-DB508AAB8B09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{746489BE-42D9-4509-9FA7-DB508AAB8B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{746489BE-42D9-4509-9FA7-DB508AAB8B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{746489BE-42D9-4509-9FA7-DB508AAB8B09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F093C46F-0E84-4FFF-835B-7615EE4AE481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F093C46F-0E84-4FFF-835B-7615EE4AE481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F093C46F-0E84-4FFF-835B-7615EE4AE481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F093C46F-0E84-4FFF-835B-7615EE4AE481}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F9DDBDA-464A-4E93-9A6E-538DD558200B}
+	EndGlobalSection
+EndGlobal
