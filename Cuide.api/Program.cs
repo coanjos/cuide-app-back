@@ -1,4 +1,8 @@
 using Cuide.api.Data;
+using Cuide.api.Repositories;
+using Cuide.api.Repositories.Interfaces;
+using Cuide.api.Services;
+using Cuide.api.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cuide.api
@@ -20,6 +24,12 @@ namespace Cuide.api
                 opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            builder.Services.AddScoped<IUserService, UserService>();
+
+            // Add repositories
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -34,6 +44,20 @@ namespace Cuide.api
             app.UseAuthorization();
 
             app.MapControllers();
+
+            using var scope = app.Services.CreateScope();
+            var services = scope.ServiceProvider;
+
+            try
+            {
+                var context = services.GetRequiredService<DataContext>();
+                context.Database.Migrate();
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "Um erro aconteceu durante a migração.");
+            }
 
             app.Run();
         }
