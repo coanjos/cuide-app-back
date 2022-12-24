@@ -8,5 +8,7 @@ namespace Cuide.api.Data
         public DataContext(DbContextOptions options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Estabelecimento> Estabelecimentos { get; set; }
     }
 }
