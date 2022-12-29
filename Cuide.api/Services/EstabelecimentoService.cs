@@ -4,7 +4,7 @@ using Cuide.api.Services.Interfaces;
 
 namespace Cuide.api.Services
 {
-    public class EstabelecimentoService : IEstabelecimentosService
+    public class EstabelecimentoService : IEstabelecimentoService
     {
         private readonly IEstabelecimentoRepository _estabelecimentoRepository;
 

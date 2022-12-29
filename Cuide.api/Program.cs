@@ -25,12 +25,14 @@ namespace Cuide.api
             });
 
             builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<IEstabelecimentosService, EstabelecimentoService>();
+            builder.Services.AddScoped<IEstabelecimentoService, EstabelecimentoService>();
+            builder.Services.AddScoped<IProdutoService, ProdutoService>();
 
             // Add repositories
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IEstabelecimentoRepository, EstabelecimentoRepository>();
+            builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
             var app = builder.Build();
 
