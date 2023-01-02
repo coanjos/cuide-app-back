@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Text;
+﻿using Microsoft.AspNetCore.Mvc;
 using Cuide.api.Services.Interfaces;
 using Cuide.api.Domain.Models;
 
@@ -10,9 +8,9 @@ namespace Cuide.api.Controllers
     [ApiController]
     public class EstabelecimentoController : ControllerBase
     {
-        private IEstabelecimentosService _estabelecimentoService;
+        private IEstabelecimentoService _estabelecimentoService;
 
-        public EstabelecimentoController(IEstabelecimentosService estabelecimentoService)
+        public EstabelecimentoController(IEstabelecimentoService estabelecimentoService)
         {
             _estabelecimentoService = estabelecimentoService;
         }

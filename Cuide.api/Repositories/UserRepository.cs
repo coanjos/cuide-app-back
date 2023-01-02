@@ -12,6 +12,7 @@ namespace Cuide.api.Repositories
         {
             _context = context;
         }
+
         public async Task PostUserAsync(User user)
         {
             _context.Users.Add(user);

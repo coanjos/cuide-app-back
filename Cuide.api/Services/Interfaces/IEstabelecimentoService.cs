@@ -3,7 +3,7 @@ using Cuide.api.Domain.Models;
 
 namespace Cuide.api.Services.Interfaces
 {
-    public interface IEstabelecimentosService
+    public interface IEstabelecimentoService
     {
         public Task PostEstabelecimentoAsync(Estabelecimento estabelecimento);
         public Task<List<Estabelecimento>> GetEstabelecimentosAsync();

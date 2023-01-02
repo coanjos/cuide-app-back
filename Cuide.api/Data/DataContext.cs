@@ -10,5 +10,7 @@ namespace Cuide.api.Data
         public DbSet<User> Users { get; set; }
 
         public DbSet<Estabelecimento> Estabelecimentos { get; set; }
+
+        public DbSet<Produto> Produtos { get; set; }
     }
 }
