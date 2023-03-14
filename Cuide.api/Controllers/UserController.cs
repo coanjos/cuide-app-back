@@ -22,13 +22,18 @@ namespace Cuide.api.Controllers
         {
             await _userService.PostUserAsync(user);
 
-            return Ok(user);
+            return Created("api/User/", user);
         } 
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             var result = await _userService.GetUsersAsync();
+
+            if (!result.Any())
+            {
+                return NotFound();
+            }
 
             return Ok(result);
         }
