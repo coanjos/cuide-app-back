@@ -25,7 +25,6 @@ namespace Cuide.UnitTests.Systems.Controllers
         }
 
         [Fact]
-
         public async Task Get_Sucesso_DeveExecutarComSucesso()
         {
             var servicoServiceMock = new Mock<IServicoService>();
@@ -52,7 +51,6 @@ namespace Cuide.UnitTests.Systems.Controllers
         }
 
         [Fact]
-
         public async Task Get_Erro_DeveRetornarNotFound() 
         {
             var servicosServiceMock = new Mock<IServicoService>();
@@ -94,7 +92,6 @@ namespace Cuide.UnitTests.Systems.Controllers
         }
 
         [Fact]
-
         public async Task GetId_Erro_DeveRetornarNotFound()
         {
             int id = 1;
@@ -112,7 +109,6 @@ namespace Cuide.UnitTests.Systems.Controllers
         }
 
         [Fact]
-
         public async Task Put_Sucesso_DeveAtualizar()
         {
             var id = 1;
@@ -137,7 +133,6 @@ namespace Cuide.UnitTests.Systems.Controllers
         }
 
         [Fact]
-
         public async Task Put_Erro_DeveDevolverBadRequest()
         {
             var id = 1;
@@ -159,7 +154,6 @@ namespace Cuide.UnitTests.Systems.Controllers
         }
 
         [Fact]
-
         public async Task Delete_Sucesso_DeveDeletar()
         {
             var id = 1;
@@ -184,7 +178,6 @@ namespace Cuide.UnitTests.Systems.Controllers
         }
 
         [Fact]
-
         public async Task Delete_Erro_DeveDevolverBadRequest()
         {
             var id = 1;
