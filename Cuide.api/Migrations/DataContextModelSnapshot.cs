@@ -16,7 +16,7 @@ namespace Cuide.api.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
 
-            modelBuilder.Entity("Cuide.api.Domain.Models.Estabelecimento", b =>
+            modelBuilder.Entity("Cuide.api.Domain.Models.Prestador", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -28,10 +28,10 @@ namespace Cuide.api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Estabelecimentos");
+                    b.ToTable("Prestadores");
                 });
 
-            modelBuilder.Entity("Cuide.api.Domain.Models.Produto", b =>
+            modelBuilder.Entity("Cuide.api.Domain.Models.Servico", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace Cuide.api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Produtos");
+                    b.ToTable("Servicos");
                 });
 
             modelBuilder.Entity("Cuide.api.Domain.Models.User", b =>

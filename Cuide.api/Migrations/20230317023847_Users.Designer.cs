@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cuide.api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221224192455_Estabelecimento")]
-    partial class Estabelecimento
+    [Migration("20230317023847_Users")]
+    partial class Users
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,7 +19,7 @@ namespace Cuide.api.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
 
-            modelBuilder.Entity("Cuide.api.Domain.Models.Estabelecimento", b =>
+            modelBuilder.Entity("Cuide.api.Domain.Models.Prestador", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -31,7 +31,22 @@ namespace Cuide.api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Estabelecimentos");
+                    b.ToTable("Prestadores");
+                });
+
+            modelBuilder.Entity("Cuide.api.Domain.Models.Servico", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Servicos");
                 });
 
             modelBuilder.Entity("Cuide.api.Domain.Models.User", b =>
