@@ -19,13 +19,18 @@ namespace Cuide.api.Controllers
         {
             await _servicoService.PostServicoAsync(servico);
 
-            return Ok(servico);
+            return Created("api/servico", servico);
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             var result = await _servicoService.GetServicosAsync();
+
+            if (!result.Any())
+            {
+                return NotFound();
+            }
 
             return Ok(result);
         }

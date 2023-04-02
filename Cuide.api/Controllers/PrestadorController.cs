@@ -20,13 +20,18 @@ namespace Cuide.api.Controllers
         {
             await _prestadorService.PostPrestadorAsync(prestador);
 
-            return Ok(prestador);
+            return Created("api/prestador", prestador);
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             var result = await _prestadorService.GetPrestadoresAsync();
+
+            if (!result.Any())
+            {
+                return NotFound();
+            }
 
             return Ok(result);
         }
