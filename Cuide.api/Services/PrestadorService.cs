@@ -7,14 +7,26 @@ namespace Cuide.api.Services
     public class PrestadorService : IPrestadorService
     {
         private readonly IPrestadorRepository _prestadorRepository;
+        private readonly IServicoRepository _servicoRepository;
 
-        public PrestadorService(IPrestadorRepository prestadorRepository)
+        public PrestadorService(IPrestadorRepository prestadorRepository, IServicoRepository servicoRepository)
         {
             _prestadorRepository = prestadorRepository;
+            _servicoRepository = servicoRepository;
         }
 
         public async Task PostPrestadorAsync(Prestador prestador)
         {
+            var servicosPrestador = prestador.ServicosOferecidos;
+
+            if (servicosPrestador != null)
+            {
+                for (int i = 0; i < servicosPrestador.Count; i++)
+                {
+                    servicosPrestador[i].Servico = await _servicoRepository.FindServicoAsync(servicosPrestador[i].Servico.Id);
+                }
+            }
+
             await _prestadorRepository.PostPrestadorAsync(prestador);
         }
 

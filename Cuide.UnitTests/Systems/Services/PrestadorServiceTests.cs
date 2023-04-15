@@ -11,18 +11,17 @@ namespace Cuide.UnitTests.Systems.Services
     public class PrestadorServiceTests
     {
         [Fact]
-
         public async Task Post_Sucesso_DevePersistir()
         {
             var prestador = new Prestador() { Id = 1, Nome = "doguinha" };
             var prestadorRepositoryMock = new Mock<IPrestadorRepository>();
-            var service = new PrestadorService(prestadorRepositoryMock.Object);
+            var servicoRepositoryMock = new Mock<IServicoRepository>();
+            var service = new PrestadorService(prestadorRepositoryMock.Object, servicoRepositoryMock.Object);
             await service.PostPrestadorAsync(prestador);
             prestadorRepositoryMock.Verify(repository => repository.PostPrestadorAsync(prestador), Times.Once());
         }
 
         [Fact]
-
         public async Task Get_Sucesso_DeveListar()
         {
             var prestadorRepositoryMock = new Mock<IPrestadorRepository>();
@@ -35,10 +34,12 @@ namespace Cuide.UnitTests.Systems.Services
                         Nome = "doguinha"
                     }
                 });
-            var service = new PrestadorService(prestadorRepositoryMock.Object);
+            var servicoRepositoryMock = new Mock<IServicoRepository>();
+            var service = new PrestadorService(prestadorRepositoryMock.Object, servicoRepositoryMock.Object);
             var result = await service.GetPrestadoresAsync();
             prestadorRepositoryMock.Verify(service => service.GetPrestadoresAsync(), Times.Once());
         }
+
         [Fact]
         public async Task GetId_Sucesso_DeveExecutarComSucesso()
         {
@@ -52,7 +53,8 @@ namespace Cuide.UnitTests.Systems.Services
                     Nome = "doguinha"
                 });
 
-            var service = new PrestadorService(prestadorRepositoryMock.Object);
+            var servicoRepositoryMock = new Mock<IServicoRepository>();
+            var service = new PrestadorService(prestadorRepositoryMock.Object, servicoRepositoryMock.Object);
 
             var result = await service.FindPrestadorAsync(id);
 
@@ -76,7 +78,8 @@ namespace Cuide.UnitTests.Systems.Services
                     Nome = "doguinha",
                 });
 
-            var service = new PrestadorService(prestadorRepositoryMock.Object);
+            var servicoRepositoryMock = new Mock<IServicoRepository>();
+            var service = new PrestadorService(prestadorRepositoryMock.Object, servicoRepositoryMock.Object);
 
             await service.UpdatePrestadorAsync(id, bodyToUpdate);
 
@@ -98,7 +101,8 @@ namespace Cuide.UnitTests.Systems.Services
                 }
               );
 
-            var service = new PrestadorService(prestadorRepositoryMock.Object);
+            var servicoRepositoryMock = new Mock<IServicoRepository>();
+            var service = new PrestadorService(prestadorRepositoryMock.Object, servicoRepositoryMock.Object);
 
             await service.DeletePrestadorAsync(id);
 

@@ -12,5 +12,9 @@ namespace Cuide.api.Data
         public DbSet<Prestador> Prestadores { get; set; }
 
         public DbSet<Servico> Servicos { get; set; }
+
+        public DbSet<Agendamento> Agendamentos { get; set; }
+        public DbSet<PrestadorServico> PrestadorServicos { get; set; }
+
     }
 }
