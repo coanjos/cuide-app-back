@@ -36,5 +36,20 @@ namespace Cuide.api.Repositories
 
             return listaAgendamentos;
         }
+
+        public async Task<Agendamento> FindAgendamentoAsync(int id)
+        {
+            var agendamento = await _context.Agendamentos.FindAsync(id);
+
+            return agendamento;
+        }
+
+        public async Task DeletarAgendamentoAsync(int id)
+        {
+            var agendamento = await FindAgendamentoAsync(id);
+
+            _context.Agendamentos.Remove(agendamento);
+            await _context.SaveChangesAsync();
+        }
     }
 }

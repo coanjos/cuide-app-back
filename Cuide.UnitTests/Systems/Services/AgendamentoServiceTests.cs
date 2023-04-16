@@ -51,5 +51,24 @@ namespace Cuide.UnitTests.Systems.Services
 
             result.Should().BeOfType<List<Agendamento>>();
         }
+
+
+        [Fact]
+        public async Task DeleteAgendamento_Sucesso_DeveDeletar()
+        {
+            var id = 1;
+
+            var agendamentoRepositoryMock = new Mock<IAgendamentoRepository>();
+            var prestadorRepositoryMock = new Mock<IPrestadorRepository>();
+
+            agendamentoRepositoryMock.Setup(repository => repository.FindAgendamentoAsync(id))
+                .ReturnsAsync(new Agendamento());
+
+            var service = new AgendamentoService(agendamentoRepositoryMock.Object, prestadorRepositoryMock.Object);
+
+            await service.DeletarAgendamentoAsync(id);
+
+            agendamentoRepositoryMock.Verify(repository => repository.DeletarAgendamentoAsync(id), Times.Once());;
+        }
     }
 }

@@ -34,5 +34,20 @@ namespace Cuide.api.Controllers
 
             return Ok(agendamentos);
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int idAgendamento)
+        {
+            var agendamentoExists = await _agendamentoService.FindAgendamentoAsync(idAgendamento);
+
+            if (agendamentoExists == null)
+            {
+                return BadRequest();
+            }
+
+            await _agendamentoService.DeletarAgendamentoAsync(idAgendamento);
+
+            return Ok();
+        }
     }
 }

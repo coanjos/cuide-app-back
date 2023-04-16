@@ -30,5 +30,15 @@ namespace Cuide.api.Services
 
             return listaAgendamentos;
         }
+
+        public async Task<Agendamento> FindAgendamentoAsync(int idAgendamento)
+        {
+            return await _agendamentoRepository.FindAgendamentoAsync(idAgendamento);
+        }
+
+        public async Task DeletarAgendamentoAsync(int idAgendamento)
+        {
+            await _agendamentoRepository.DeletarAgendamentoAsync(idAgendamento);
+        }
     }
 }
