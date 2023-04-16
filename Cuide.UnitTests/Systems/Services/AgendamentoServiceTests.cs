@@ -28,5 +28,28 @@ namespace Cuide.UnitTests.Systems.Services
             prestadorRepositoryMock.Verify(repo => repo.FindPrestadorAsync(idPrestador), Times.Once());
             agendamentoRepositoryMock.Verify(repo => repo.CriarAgendamentoAsync(It.Is<Agendamento>(a => a.Prestador.Id == prestador.Id)));
         }
+
+        [Fact]
+        public async Task ListarAgendamentoAsync_Sucesso_DeveListar()
+        {
+            var idPrestador = 1;
+            var idProduto = 1;
+            var listaAgendamentos = new List<Agendamento>()
+            {
+                new Agendamento(),
+                new Agendamento()
+            };
+
+            var agendamentoRepositoryMock = new Mock<IAgendamentoRepository>();
+            var prestadorRepositoryMock = new Mock<IPrestadorRepository>();
+
+            var service = new AgendamentoService(agendamentoRepositoryMock.Object, prestadorRepositoryMock.Object);
+
+            agendamentoRepositoryMock.Setup(repo => repo.ListarAgendamentosAsync(idProduto)).ReturnsAsync(listaAgendamentos);
+
+            var result = await service.ListarAgendamentosAsync(idProduto);
+
+            result.Should().BeOfType<List<Agendamento>>();
+        }
     }
 }
