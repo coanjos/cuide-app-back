@@ -22,5 +22,17 @@ namespace Cuide.api.Controllers
             return Created("api/agendamento", data);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Get(int idProduto)
+        {
+            var agendamentos = await _agendamentoService.ListarAgendamentosAsync(idProduto);
+
+            if (agendamentos == null)
+            {
+                return NotFound("Nenhum agendamento encontrado");
+            }
+
+            return Ok(agendamentos);
+        }
     }
 }

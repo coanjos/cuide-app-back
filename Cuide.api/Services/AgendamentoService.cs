@@ -23,5 +23,12 @@ namespace Cuide.api.Services
 
             await _agendamentoRepository.CriarAgendamentoAsync(agendamento);
         }
+
+        public async Task<List<Agendamento>> ListarAgendamentosAsync(int idProduto)
+        {
+            var listaAgendamentos = await _agendamentoRepository.ListarAgendamentosAsync(idProduto);
+
+            return listaAgendamentos;
+        }
     }
 }

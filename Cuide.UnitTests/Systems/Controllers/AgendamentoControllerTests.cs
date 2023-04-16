@@ -20,5 +20,27 @@ namespace Cuide.UnitTests.Systems.Controllers
             agendamentoServiceMock.Verify(service => service.CriarAgendamentoAsync(idPrestador, data), Times.Once());
             result.StatusCode.Should().Be(201);
         }
+
+        [Fact]
+        public async Task Get_Sucesso_DeveListarAgendamentos()
+        {
+            var idPrestador = 1;
+            var idProduto = 1;
+            var listaAgendamentos = new List<Agendamento>()
+            {
+                new Agendamento(),
+                new Agendamento()
+            };
+
+            var agendamentoServiceMock = new Mock<IAgendamentoService>();
+            agendamentoServiceMock.Setup(service => service.ListarAgendamentosAsync(idProduto)).ReturnsAsync(listaAgendamentos);
+
+            var controller = new AgendamentoController(agendamentoServiceMock.Object);
+            var result = (OkObjectResult)await controller.Get(idProduto);
+
+            agendamentoServiceMock.Verify(service => service.ListarAgendamentosAsync(idProduto), Times.Once());
+            result.StatusCode.Should().Be(200);
+            result.Value.Should().BeOfType<List<Agendamento>>();
+        }
     }
 }
