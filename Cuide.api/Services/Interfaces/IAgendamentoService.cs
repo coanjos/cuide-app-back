@@ -6,5 +6,8 @@ namespace Cuide.api.Services.Interfaces
     {
         public Task CriarAgendamentoAsync(int idPrestador, DateTime data);
         public Task<List<Agendamento>> ListarAgendamentosAsync(int idProduto);
+        public Task DeletarAgendamentoAsync(int idAgendamento);
+        public Task<Agendamento> FindAgendamentoAsync(int idAgendamento);
+
     }
 }

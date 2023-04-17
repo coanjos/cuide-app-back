@@ -42,5 +42,23 @@ namespace Cuide.UnitTests.Systems.Controllers
             result.StatusCode.Should().Be(200);
             result.Value.Should().BeOfType<List<Agendamento>>();
         }
+
+        [Fact]
+        public async Task Delete_Sucesso_DeveDeletarAgendamento()
+        {
+            var idAgendamento = 1;
+
+            var agendamento = new Agendamento() { Id = 1 };
+
+            var agendamentoServiceMock = new Mock<IAgendamentoService>();
+            agendamentoServiceMock.Setup(service => service.FindAgendamentoAsync(idAgendamento)).ReturnsAsync(agendamento);
+
+            var controller = new AgendamentoController(agendamentoServiceMock.Object);
+
+            var result = (OkResult)await controller.Delete(idAgendamento);
+
+            agendamentoServiceMock.Verify(s => s.DeletarAgendamentoAsync(idAgendamento), Times.Once());
+            result.StatusCode.Should().Be(200);
+        }
     }
 }
