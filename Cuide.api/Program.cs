@@ -45,6 +45,8 @@ namespace Cuide.api
                 app.UseSwaggerUI();
             }
 
+            app.UseCors(option => option.AllowAnyOrigin());
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
